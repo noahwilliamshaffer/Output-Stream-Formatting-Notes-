@@ -1,0 +1,30 @@
+Member functions and flags
+Output streams (class ostream and related classes) have some useful member functions for controlling output formatting. Note that these can be used not only with cout, but with other types of output streams. (We'll learn about file output streams soon).
+setf() -- the "set flags" function. Takes as a parameter the flag to be turned "on". Some of the flags that can be turned on or off are:
+ios::fixed -- to specify that floating-point numbers will be printed in fixed notation.
+ios::scientific -- to specify that floating-point numbers will be printed in scientific (exponential) notation.
+ios::showpoint -- specifies that the decimal point will always be printed for floating point types (even if the value is a whole number, like 4.0
+ios::right -- right-justifies an output item in a field, if a field width is specified
+ios::left -- left-justifies an output item in a field, if a field width is specified
+See the table below for more formatting flags
+unsetf() -- the "unset flags" function. Call this to turn off one of the flags
+precision() -- sets the precision for floating-point values to a specific number of significant digits after the decimal point. Takes that number as a parameter
+width() -- used to specify the "field width" for the next item that is output. Number of character positions is specified as a parameter. Left and right justify flags will apply when this function is used to specify field widths. Extra "space" in the field will be filled with a fill character, which is set to a space by default:
+  int x = 1234;
+  cout.setf(ios::right);
+  cout.width(10);
+  cout << "Hello";
+  cout.width(15);
+  cout << x;
+
+  // output of the above is:
+  //      Hello           1234
+fill() -- used to specify the fill character to be used to pad out extra space in a field (when using width()). Takes the character as a parameter.
+  int x = 1234;
+  cout.setf(ios::right);
+  cout.fill('.');	// change the fill character
+  cout.width(10);	// set field width to 10
+  cout << x;		// print x
+
+  // output of the above is:
+  // ......1234
